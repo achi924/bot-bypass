@@ -8,8 +8,8 @@ import asyncio
 from collections import deque
 import logging
 import time
-
 load_dotenv()
+from server import server_on
 
 TOKEN = os.getenv("BOT_TOKEN")
 CLIENT_ID = os.getenv("CLIENT_ID")
@@ -173,5 +173,7 @@ async def setbypass(interaction: discord.Interaction):
     )
     embed.set_image(url="https://media2.giphy.com/media/12wkaD1nh3XsFG/giphy.gif")
     await interaction.response.send_message(embed=embed, view=ButtonView())
+
+server_on()  # เรียกใช้ฟังก์ชัน server_on เพื่อเริ่มเซิร์ฟเวอร์ Flask
 
 bot.run(TOKEN)
